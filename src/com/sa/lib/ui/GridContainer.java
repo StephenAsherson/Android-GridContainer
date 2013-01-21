@@ -159,12 +159,11 @@ public class GridContainer extends ScrollView
 					itemParams.height = convertDpToPx(rowDetails.rowHeight);
 				}
 
-				if (rowDetails.itemMargin != GridRowDetails.NONE
-					&& oldParams instanceof ViewGroup.MarginLayoutParams)
+				if (oldParams instanceof ViewGroup.MarginLayoutParams)
 				{
-					itemParams.setMargins(rowDetails.itemMargin,
-						rowDetails.itemMargin, rowDetails.itemMargin,
-						rowDetails.itemMargin);
+					itemParams.setMargins(rowDetails.itemMarginLeft,
+						rowDetails.itemMarginTop, rowDetails.itemMarginRight,
+						rowDetails.itemMarginBottom);
 				}
 
 				itemView.setLayoutParams(itemParams);
@@ -198,16 +197,38 @@ public class GridContainer extends ScrollView
 		public static final int NONE = -1;
 
 		public int numberOfItemsInRow; // number of views to fit in this row.
-		public int itemMargin = NONE; // optional margin between the views.
+		public int itemMarginTop = 0; // optional top margin between the views.
+		public int itemMarginBottom = 0; // optional bottom margin between the views.
+		public int itemMarginLeft = 0; // optional left margin between the views.
+		public int itemMarginRight = 0; // optional right margin between the views.
 		public int rowHeight = NONE; // optional fixed height for the row, specified in DP.
 
 		public GridRowDetails(int numberOfItemsInRow, int itemMargin,
 			int rowHeight)
 		{
 			this.numberOfItemsInRow = numberOfItemsInRow;
-			this.itemMargin = itemMargin;
+			this.itemMarginTop = itemMargin;
+			this.itemMarginBottom = itemMargin;
+			this.itemMarginLeft = itemMargin;
+			this.itemMarginRight = itemMargin;
 			this.rowHeight = rowHeight;
 		}
+		
+		public GridRowDetails(int numberOfItemsInRow, int rowHeight)
+		{
+			this.numberOfItemsInRow = numberOfItemsInRow;
+			this.rowHeight = rowHeight;
+		}
+		
+		/**
+		 * Set margins for each side.
+		 */
+		public void setMargins(int leftMargin, int topMargin, int rightMargin, int bottomMargin)
+		{
+			this.itemMarginTop = topMargin;
+			this.itemMarginBottom = rightMargin;
+			this.itemMarginLeft = leftMargin;
+			this.itemMarginRight = rightMargin;
+		}
 	}
-
 }

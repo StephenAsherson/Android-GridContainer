@@ -31,6 +31,12 @@ Disclaimer
 The GridContainer project is very basic and currently only fits a specific need. Feel free to take the code and modify as you need for
 your purposes.
 
+
+Release Notes
+-------------
+* v1.1: updated the GridContainer and GridRowDetails classes to allow margins to be specified for each side of a grid item view.
+* v1.0: Initial commit and official 1.0 release
+
 Who Made It?
 -----
 
