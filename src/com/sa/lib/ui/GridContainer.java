@@ -119,14 +119,6 @@ public class GridContainer extends ScrollView
 		int itemsAdded = 0;
 		for (GridRowDetails rowDetails : rowConfiguration)
 		{
-			// Validate that there are enough items left for this row
-			if ((itemsAdded + rowDetails.numberOfItemsInRow) > gridItems.size())
-			{
-				throw new IllegalArgumentException(
-					"Invalid row configuration provided. Please ensure that the number of items"
-						+ " specified in the configuration matches that of the grid items provided.");
-			}
-
 			// create the row container
 			LinearLayout rowLayout = new LinearLayout(getContext());
 			LayoutParams rowParams = new LayoutParams(
@@ -139,6 +131,12 @@ public class GridContainer extends ScrollView
 			// view
 			for (int itemNumberInRow = 0; itemNumberInRow < rowDetails.numberOfItemsInRow; itemNumberInRow++)
 			{
+				if (itemsAdded == gridItems.size())
+				{
+					// we have no more grid items to add
+					break;
+				}
+				
 				View itemView = gridItems.get(itemsAdded);
 
 				if (onClickListener != null)
@@ -174,16 +172,6 @@ public class GridContainer extends ScrollView
 
 			gridContainer.addView(rowLayout);
 		}
-	}
-
-	/**
-	 * Utility method to convert dp units into pixels.
-	 */
-	private int convertDpToPx(int dp)
-	{
-		DisplayMetrics displayMetrics = getContext().getResources()
-			.getDisplayMetrics();
-		return (int) ((dp * displayMetrics.density) + 0.5);
 	}
 
 	/**
