@@ -34,6 +34,7 @@ your purposes.
 
 Release Notes
 -------------
+* v1.2: The margins for items in a grid row are now specified in pixels and not DP.
 * v1.1: updated the GridContainer and GridRowDetails classes to allow margins to be specified for each side of a grid item view.
 * v1.0: Initial commit and official 1.0 release
 
