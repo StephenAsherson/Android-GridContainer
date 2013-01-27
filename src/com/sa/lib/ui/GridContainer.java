@@ -156,7 +156,7 @@ public class GridContainer extends ScrollView
 				// to the row
 				if (rowDetails.rowHeight != GridRowDetails.NONE)
 				{
-					itemParams.height = convertDpToPx(rowDetails.rowHeight);
+					itemParams.height = rowDetails.rowHeight; //convertDpToPx(rowDetails.rowHeight);
 				}
 
 				if (oldParams instanceof ViewGroup.MarginLayoutParams)
@@ -201,7 +201,7 @@ public class GridContainer extends ScrollView
 		public int itemMarginBottom = 0; // optional bottom margin between the views.
 		public int itemMarginLeft = 0; // optional left margin between the views.
 		public int itemMarginRight = 0; // optional right margin between the views.
-		public int rowHeight = NONE; // optional fixed height for the row, specified in DP.
+		public int rowHeight = NONE; // optional fixed height for the row, specified in pixels.
 
 		public GridRowDetails(int numberOfItemsInRow, int itemMargin,
 			int rowHeight)
