@@ -21,3 +21,6 @@ local.properties
 
 # Apple DS_Store files
 .DS_Store
+
+# Maven files
+target/
